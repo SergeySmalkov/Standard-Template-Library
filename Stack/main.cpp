@@ -140,11 +140,11 @@ public:
     }
 
     iterator cbegin() const {
-        return const_iterator(begin_, 0);
+        return const_iterator(this, 0);
     }
 
     iterator cend() const {
-        return const_iterator(end_, size_);
+        return const_iterator(this, size_);
     }
 
 
