@@ -63,7 +63,7 @@ public:
 
         Iterator<isConst> operator--(int) {
             auto copy = *this;
-            ++index_;
+            --index_;
             return copy;
         }
 
