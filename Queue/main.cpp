@@ -6,9 +6,9 @@ template<typename T, typename Allocator = std::allocator<T>>
 class Queue {
 public:
     explicit Queue(size_t capacity_ = 8): capacity_(capacity_), begin_(0), end_(0), data_(std::allocator_traits<Allocator>::allocate(alloc_, capacity_),
-                                                                                          [&](T* ptr){std::allocator_traits<Allocator>::destroy(alloc_, ptr);
-                                                                                              std::allocator_traits<Allocator>::deallocate(alloc_, ptr, capacity_);
-                                                                                          }) {}
+          [&](T* ptr){std::allocator_traits<Allocator>::destroy(alloc_, ptr);
+              std::allocator_traits<Allocator>::deallocate(alloc_, ptr, capacity_);
+          }) {}
 
     Queue<T>& operator = (const Queue<T>& other) {
         if (this == std::addressof(other)) {
