@@ -24,9 +24,9 @@ public:
     }
 
     explicit Queue(const Queue<T>& other): begin_(0), end_(0), capacity_(other.capacity_), data_(std::allocator_traits<Allocator>::allocate(alloc_, other.capacity_),
-                                                                                                 [&](T* ptr){std::allocator_traits<Allocator>::destroy(alloc_, ptr);
-                                                                                                     std::allocator_traits<Allocator>::deallocate(alloc_, ptr, capacity_);
-                                                                                                 }) {
+         [&](T* ptr){std::allocator_traits<Allocator>::destroy(alloc_, ptr);
+             std::allocator_traits<Allocator>::deallocate(alloc_, ptr, capacity_);
+         }) {
         for (size_t i = 0; i < other.end_ - other.begin_; ++i) {
             emplace_back_(i, other.data_[other.begin_ + i]);
         }
