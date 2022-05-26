@@ -40,10 +40,16 @@ public:
         begin_ = other.begin_;
         end_ = other.end_;
         capacity_ = other.capacity_;
+        other.data_ = nullptr;
+        other.begin_ = 0;
+        other.end_ = 0;
         return *this;
     }
 
     explicit Queue(Queue<T>&& other) noexcept : data_(std::move(other.data_)), begin_(other.begin_), end_(other.end_), capacity_(other.capacity_) {
+        other.data_ = nullptr;
+        other.begin_ = 0;
+        other.end_ = 0;
     }
 
     void emplace_back(const T& element) {
